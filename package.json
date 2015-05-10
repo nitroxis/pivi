@@ -1,0 +1,25 @@
+{
+  "name": "pivi",
+  "version": "0.1.0",
+  "description": "A simple visualisation tool that is based on streaming",
+  "main": "pivi.js",
+  "repository": "",
+  "author": "Maximilian Klein <dasmaxl@gmail.com>",
+  "contributors": [
+    {
+      "name": "Rasmus Buchmann"
+    }
+  ],
+  "dependencies": {
+    "canvas": "^1.2.2",
+    "event-stream": "^3.3.1",
+    "lodash": "^3.8.0"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.4"
+  },
+  "scripts":  {
+    "postinstall" : "./node_modules/pegjs/bin/pegjs ./lib/grammar.peg ./lib/grammar.js"
+  }
+}

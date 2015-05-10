@@ -1,0 +1,45 @@
+start
+ = command
+
+command
+  = primitive / property
+  / bracket / float / emptyline
+
+emptyline = ws { return {}; }
+
+bracket
+ = "[" { return { type: "push" }; } / "]" { return { type: "pop" }; }
+ 
+primitive = point / line / polyline / circle
+
+property = pointSize / color
+
+line = "line" pt1:tupel pt2:tupel { return { type: "line", data: [pt1, pt2] }; }
+
+polyline = "polyline" pts:(tupel)* { return { type: "polyline", data : pts }; } 
+
+point
+  = "point" pt:tupel { return { type: "point", data: [pt] }; }
+  
+circle = "circle" pos:tupel r:float { return { type: "circle", data: [pos,r] }; }
+
+pointSize = "pointSize" ws size:ufloat { return { type: "property", property: "pointSize", data: size }; }
+
+color = "color" color:utupel3 { return { type: "property", property: "color", data: color }; }
+
+tupel
+ = ws first:float ws second:float ws { return {x: first, y: second }; }
+
+utupel3
+ = ws first:ufloat ws second:ufloat ws third:ufloat ws { return {x: first, y: second, z: third }; }
+ 
+ws = ( "(" / " " / ")" / "," )*
+
+float 
+  = num:$("-"? digits ( "." digits )? ( "e" digits)?) { return parseFloat(num); }
+
+// unsigned float for color, pointSize etc.
+ufloat 
+  = num:$(digits ( "." digits )? ( "e" digits)?) { return parseFloat(num); }
+  
+digits = [0-9]+
