@@ -10,7 +10,7 @@ emptyline = ws { return {}; }
 bracket
  = "[" { return { type: "push" }; } / "]" { return { type: "pop" }; }
 
-primitive = points / line_types / circle
+primitive = points / line_types / circles
 
 property = pointSize / color
 
@@ -23,7 +23,8 @@ polyline = "polyline" pts:(tupel)* { return { type: "polyline", data : pts }; }
 points
   = ( ("point" wsc) / "points" ) pts:(tupel)* { return { type: "points", data: pts }; }
 
-circle = "circle" pos:tupel r:float { return { type: "circle", data: [[pos,r]] }; }
+circles = "circle" cs:(circle)* { return { type: "circles", data: cs }; }
+circle = pos:tupel r:float ws { return [pos,r]; }
 
 pointSize = "pointSize" ws size:ufloat { return { type: "property", property: "pointSize", data: size }; }
 
