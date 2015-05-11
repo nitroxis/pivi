@@ -1,5 +1,5 @@
 start
- = command
+ = cmd:command ("#" .*)? { return cmd; }
 
 command
   = primitive / property
@@ -9,19 +9,21 @@ emptyline = ws { return {}; }
 
 bracket
  = "[" { return { type: "push" }; } / "]" { return { type: "pop" }; }
- 
-primitive = point / line / polyline / circle
+
+primitive = points / line_types / circle
 
 property = pointSize / color
 
-line = "line" pt1:tupel pt2:tupel { return { type: "line", data: [pt1, pt2] }; }
+line_types = line / polyline
+// draw separated lines
+line = ( ("line" wsc) / "lines" ) pts:(tupel)* { return { type: "lines", data: pts }; }
+// draw multiple connected lines
+polyline = "polyline" pts:(tupel)* { return { type: "polyline", data : pts }; }
 
-polyline = "polyline" pts:(tupel)* { return { type: "polyline", data : pts }; } 
+points
+  = ( ("point" wsc) / "points" ) pts:(tupel)* { return { type: "points", data: pts }; }
 
-point
-  = "point" pt:tupel { return { type: "point", data: [pt] }; }
-  
-circle = "circle" pos:tupel r:float { return { type: "circle", data: [pos,r] }; }
+circle = "circle" pos:tupel r:float { return { type: "circle", data: [[pos,r]] }; }
 
 pointSize = "pointSize" ws size:ufloat { return { type: "property", property: "pointSize", data: size }; }
 
@@ -32,14 +34,15 @@ tupel
 
 utupel3
  = ws first:ufloat ws second:ufloat ws third:ufloat ws { return {x: first, y: second, z: third }; }
- 
-ws = ( "(" / " " / ")" / "," )*
 
-float 
+ws = wsc*
+wsc = ( "(" / " " / ")" / "," / [\t] )
+
+float
   = num:$("-"? digits ( "." digits )? ( "e" digits)?) { return parseFloat(num); }
 
 // unsigned float for color, pointSize etc.
-ufloat 
+ufloat
   = num:$(digits ( "." digits )? ( "e" digits)?) { return parseFloat(num); }
-  
+
 digits = [0-9]+

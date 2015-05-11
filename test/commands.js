@@ -15,12 +15,12 @@ describe("Parsing Commands", function(){
                 y: 2
             }]
         }];
-        
+
     parse(point[0]).should.deep.equal(point[1]);
   });
   it("should ignore whitespaces", function(){
-    var point = 
-        ["point   ( 10 , 0 )",
+    var point =
+        ["point  \t ( 10 , 0 )",
         {
             type: "point",
             data: [{
@@ -31,7 +31,7 @@ describe("Parsing Commands", function(){
     parse(point[0]).should.deep.equal(point[1]);
   });
   it("should parse negative numbers", function(){
-    var point = 
+    var point =
         ["point   ( -10 , -5 )",
         {
             type: "point",
@@ -45,7 +45,7 @@ describe("Parsing Commands", function(){
   it("detects Push commands", function(){
     parse("[").should.deep.equal({type:"push"});
   });
-  
+
   it("detects Push commands", function(){
     parse("]").should.deep.equal({type:"pop"});
   });
