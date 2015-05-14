@@ -1,6 +1,7 @@
 # TODO
  - Parenthesis and commas are whitespace
  - Tupel definition
+ - Use `[` to push to and `]` to pop from the stack
 
 # Specification for the pivi Language
 
@@ -77,5 +78,32 @@ circle ((120 120) 40) 50 50 30
 
 
 ## State commands
+
+All state commands are prefixed with `set` and stored in a state stack.
+
+### color
+
+Via the `color` command you can change the color of every stroke and fill
+operation.
+
+```
+set color red
+circle 100 100 50
+set color green
+circle 100 100 20
+```
+![](example5.png)
+
+
+### lineWidth
+
+The `lineWidth` sets the width of strokes.
+
+```
+set lineWidth 7
+polyline 10 10 100 100 150 10 150 150 10 150 10 10
+```
+![](example6.png)
+
 
 ## Controlling commands

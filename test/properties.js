@@ -8,9 +8,9 @@ describe("Parsing Commands", function(){
     var property =
        ["set pointSize 7",
         {
-            type:"property",
-            property: "pointSize",
-            data: 7
+            type:"pointSize",
+            data: 7,
+            isProperty: true
         }];
 
     parse(property[0]).should.deep.equal(property[1]);
@@ -20,23 +20,42 @@ describe("Parsing Commands", function(){
 
     (function(){parse(pointSize[0]);}).should.throw(Error);
   });
+  it("can parse the 'lineWidth' property", function(){
+    var property =
+       ["set lineWidth 7",
+        {
+            type:"lineWidth",
+            data: [7],
+            isProperty: true
+        }];
+
+    parse(property[0]).should.deep.equal(property[1]);
+  });
+  it("doesn't accept negative lineWidth", function(){
+    var pointSize = "set lineWidth -7";
+
+    (function(){parse(pointSize[0]);}).should.throw(Error);
+  });
+  /* color tuples aren't supported yet
   it("can parse the 'color' property with an tupel", function(){
     var property =
        ["set color rgb 128 200 100",
         {
             type: "color",
-            data: {x:128, y:200, z:100}
+            data: {x:128, y:200, z:100},
+            isProperty: true
         }];
 
     parse(property[0]).should.deep.equal(property[1]);
-  });
+  });*/
   it("can parse the 'color' property using color names", function(){
     var knownColors = ["red","green","blue"];
     _.each(knownColors, function(c){
       var property = ["set color " + c,
         {
             type: "color",
-            data: c
+            data: c,
+            isProperty: true
         }];
         parse(property[0]).should.deep.equal(property[1]);
     });
