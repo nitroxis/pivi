@@ -21,8 +21,12 @@ exactly one 2 tuple.
 
 *Aliasses: `points`, `point`*
 
-{{{example "point 100 100 100 101 100 102 100 103 100 104
-points 100 105 100 106 100 107"}}}
+```
+point 100 100 100 101 100 102 100 103 100 104
+points 100 105 100 106 100 107
+```
+![](example1.png)
+
 
 ### lines
 
@@ -32,7 +36,11 @@ takes two two-dimensional tuples as the endpoints. The n-th line takes point
 
 *Aliasses: `lines`, `line`*
 
-{{{example "lines ((100 100), (200, 200)) 200 100 100 200"}}}
+```
+lines ((100 100), (200, 200)) 200 100 100 200
+```
+![](example2.png)
+
 
 ### polyline
 
@@ -43,7 +51,11 @@ n-th line segment thus takes point n and n+1 as its enpoints (n starting at 1).
 The `polyline` command supports exactly one polyline per command line. If you
 want multiple polylines you have to create a new line for each polyline.
 
-{{{example "polyline 100 100 200 200 200 100 100 200"}}}
+```
+polyline 100 100 200 200 200 100 100 200
+```
+![](example3.png)
+
 
 ### circles
 
@@ -53,7 +65,11 @@ three values.
 
 *Aliasses: `circles`, `circle`*
 
-{{{example "circle ((120 120) 40) 50 50 30"}}}
+```
+circle ((120 120) 40) 50 50 30
+```
+![](example4.png)
+
 
 
 ## State commands
