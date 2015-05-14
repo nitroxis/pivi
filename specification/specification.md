@@ -107,3 +107,19 @@ polyline 10 10 100 100 150 10 150 150 10 150 10 10
 
 
 ## Controlling commands
+
+### State control
+
+You can push the current state with a `[` in a single line and you can pop
+all stack changes by a `]` in a single line.
+
+```
+set color red
+[
+set color green
+circle 100 100 50
+]
+circle 100 100 20
+```
+![](example7.png)
+

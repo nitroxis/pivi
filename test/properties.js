@@ -54,7 +54,7 @@ describe("Parsing Commands", function(){
       var property = ["set color " + c,
         {
             type: "color",
-            data: c,
+            data: [c],
             isProperty: true
         }];
         parse(property[0]).should.deep.equal(property[1]);
