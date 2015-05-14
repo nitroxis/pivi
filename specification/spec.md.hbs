@@ -1,3 +1,7 @@
+# TODO
+ - Parenthesis and commas are whitespace
+ - Tupel definition
+
 # Specification for the pivi Language
 
 The pivi Language is a *one command per line* language that converts commands
