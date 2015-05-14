@@ -16,7 +16,8 @@
   "dependencies": {
     "canvas": "^1.2.2",
     "event-stream": "^3.3.1",
-    "lodash": "^3.8.0"
+    "lodash": "^3.8.0",
+    "yargs": "^3.9.0"
   },
   "devDependencies": {
     "chai": "^2.3.0",
