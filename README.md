@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/LittleHelicase/pivi.svg)](https://travis-ci.org/LittleHelicase/pivi)
+
 # Pivi
 Pivi (short for Pipeviewer) is a tool that simplifies visualization tasks. It has a simple stream based input format.
 
