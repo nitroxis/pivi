@@ -22,7 +22,7 @@ npm install pivi
 The following program generates a zigzag line and outputs it as a PNG image.
 
 ```
-echo "polyline (0 0) (100 100) (100 0) (0 100)" | node pivi.js
+echo "polyline (0 0) (100 100) (100 0) (0 100)" | pivi
 ```
 
 # Supported Commands
