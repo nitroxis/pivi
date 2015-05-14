@@ -12,7 +12,7 @@ bracket
 
 primitive = points / line_types / circles
 
-property = pointSize / color
+property = "set" ws property:(pointSize / color) { return property; }
 
 line_types = line / polyline
 // draw separated lines
@@ -28,10 +28,16 @@ circle = pos:tupel r:ufloat ws { return [pos,r]; }
 
 pointSize = "pointSize" ws size:ufloat { return { type: "property", property: "pointSize", data: size }; }
 
-color = "color" color:utupel3 { return { type: "property", property: "color", data: color }; }
+color = "color" ws color:colorType { return { type: "color", data: color }; }
 
 tupel
  = ws first:float ws second:float ws { return {x: first, y: second }; }
+
+colorType = color:(rgb / hexColor / name) { return color; }
+
+rgb = "rgb" rgbColor:utupel3 { return rgbColor; }
+hexColor = "#" hexColor:([0-9,A-F,a-f]+) { return hexColor; }
+name = nameColor:([A-Z,a-z])+ { return nameColor.join(""); }
 
 utupel3
  = ws first:ufloat ws second:ufloat ws third:ufloat ws { return {x: first, y: second, z: third }; }
