@@ -24,7 +24,7 @@ points
   = ( ("point" wsc) / "points" ) pts:(tupel)* { return { type: "points", data: pts }; }
 
 circles = "circle" cs:(circle)* { return { type: "circles", data: cs }; }
-circle = pos:tupel r:float ws { return [pos,r]; }
+circle = pos:tupel r:ufloat ws { return [pos,r]; }
 
 pointSize = "pointSize" ws size:ufloat { return { type: "property", property: "pointSize", data: size }; }
 
