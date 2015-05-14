@@ -27,3 +27,5 @@ build/Release
 node_modules
 
 lib/grammar.js
+a.out
+examples/**/*.png
