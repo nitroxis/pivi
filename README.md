@@ -7,7 +7,13 @@ You need Cairo to create the images. We use [node-canvas](https://github.com/Aut
 Then you simply run:
 
 ```
-npm install
+npm install -g pivi
+```
+
+Or if you want to use pivi in your project you can use
+
+```
+npm install pivi
 ```
 
 # Example
