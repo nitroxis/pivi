@@ -2,9 +2,10 @@
 var gulp = require("gulp");
 
 var jshint = require("gulp-jshint");
-var pivi = require("./lib/api.js");
 var handlebars = require("gulp-compile-handlebars");
 var rename = require("gulp-rename");
+var peg = require("gulp-peg");
+var gutil = require("gulp-util");
 
 gulp.task("jshint", function(){
   gulp.src(["./lib/*.js","!./lib/grammar.js"])
@@ -12,7 +13,14 @@ gulp.task("jshint", function(){
     .pipe(jshint.reporter('default'));
 });
 
+gulp.task("build-grammar", function(){
+  gulp.src("./lib/grammar.peg")
+    .pipe( peg( ).on( "error", gutil.log ) )
+    .pipe(gulp.dest("./lib/"));
+});
+
 gulp.task("build-specification", function(){
+  var pivi = require("./lib/api.js");
   var i=0;
   options = {
     noEscape: true,
