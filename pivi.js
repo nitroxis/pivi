@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var canvas = require("canvas");
 var es = require("event-stream");
 var parse = require("./lib/grammar.js").parse;

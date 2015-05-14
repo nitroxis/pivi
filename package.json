@@ -1,9 +1,12 @@
 {
   "name": "pivi",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple visualisation tool that is based on streaming",
-  "main": "pivi.js",
-  "repository": "",
+  "main": "./lib/api.js",
+  "bin":{
+    "pivi" : "./pivi.js"
+  },
+  "repository": "git@github.com:LittleHelicase/pivi.git",
   "author": "Maximilian Klein <dasmaxl@gmail.com>",
   "contributors": [
     {
