@@ -4,11 +4,12 @@ var Sequences = require("../lib/sequences.js");
 var sequence = Sequences.sequence;
 var repeat = Sequences.repeat;
 var cycle = Sequences.cycle;
+var unify = Sequences.unify;
 var chai = require("chai");
 chai.should();
 
 describe("Command Sequences", function(){
-  /*it("it converts a command into a call descriptor", function(){
+  it("it converts a command into a call descriptor", function(){
     var seq = sequence({call:"function",args:["args"]})();
     seq.should.deep.equal([{call:"function",args:["args"]}]);
 
@@ -43,12 +44,11 @@ describe("Command Sequences", function(){
       repeat(
         sequence({call:"fn1",args:[]},{call:"fn2",args:[]})))(Array(5));
     seq.length.should.equal(10);
-  });*/
+  });
   it("repeated sequences use data", function(){
     var seq = sequence(
       repeat(
-        sequence({call:"fn1",args:[]},{call:"fn2",args:["@a","@b"]})))([{a:0,b:1}]);
-    console.log(seq);
+        unify({call:"fn1",args:[]},{call:"fn2",args:["@a","@b"]})))([{a:0,b:1}]);
     seq[1].args[0].should.equal(0);
     seq[1].args[1].should.equal(1);
   });
