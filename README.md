@@ -27,6 +27,9 @@ All points can be written as a tupel or you can simply omit all commas or bracke
 - `circle ((centerx,centery) radius)`
 - `circles ((100,100) 20) ((centerx,centery) radius)`
 
+# Alternatives
+You can try ImageMagick's convert. You can pass arguments to it that function similar to our commands. More [here](http://www.imagemagick.org/Usage/draw/#circles)
+
 # Contributors
 - Rasmus Buchmann
 - Maximilian Klein
