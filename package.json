@@ -21,6 +21,7 @@
     "pegjs": "^0.8.0"
   },
   "scripts": {
-    "postinstall": "./node_modules/pegjs/bin/pegjs ./lib/grammar.peg ./lib/grammar.js"
+    "postinstall": "./node_modules/pegjs/bin/pegjs ./lib/grammar.peg ./lib/grammar.js",
+    "test": "./node_modules/mocha/bin/mocha"
   }
 }
