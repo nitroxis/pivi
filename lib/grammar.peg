@@ -2,10 +2,14 @@ start
  = cmd:command ("#" .*)? { return cmd; }
 
 command
-  = primitive / property
+  = primitive / property / canvas / newframe
   / bracket / float / emptyline
 
 emptyline = ws { return {}; }
+
+newframe = "newframe" { return  {type: "newframe"}; }
+
+canvas = "canvas" ws width:float ws height:float { return {type: "initialize", width: width, height: height}; }
 
 bracket
  = "[" { return { type: "push" }; } / "]" { return { type: "pop" }; }

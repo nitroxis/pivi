@@ -17,6 +17,7 @@
     "canvas": "^1.2.2",
     "event-stream": "^3.3.1",
     "lodash": "^3.8.0",
+    "printf": "^0.2.1",
     "yargs": "^3.9.0"
   },
   "devDependencies": {
