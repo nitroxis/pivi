@@ -108,6 +108,19 @@ polyline 10 10 100 100 150 10 150 150 10 150 10 10
 
 ## Controlling commands
 
+### Animation control
+
+You can start new frames by adding a line with "newframe". This starts a
+completely new frame.
+
+```
+line 0 0 200 200
+newframe
+line 200 0 0 200
+```
+![](example7.gif)
+
+
 ### State control
 
 You can push the current state with a `[` in a single line and you can pop
@@ -121,5 +134,5 @@ circle 100 100 50
 ]
 circle 100 100 20
 ```
-![](example7.png)
+![](example8.png)
 

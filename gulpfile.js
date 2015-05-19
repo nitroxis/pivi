@@ -26,9 +26,9 @@ gulp.task("build-grammar", function(){
     .pipe(gulp.dest("./lib/"));
 });
 
-gulp.task("specification", ["clean","build-grammar","build-specification"]);
+gulp.task("specification", ["build-grammar","build-specification"]);
 
-gulp.task("build-specification", function(){
+gulp.task("build-specification", ["build-grammar"], function(){
   var pivi = require("./lib/api.js");
   var i=0;
   options = {
@@ -37,8 +37,13 @@ gulp.task("build-specification", function(){
     {
       example: function(piviStr){
         i++;
-        pivi.processString(piviStr, "specification/example"+i+".png");
-        return "```\n"+piviStr+"\n```\n![](example"+i+".png)\n";
+        if(piviStr.indexOf("newframe") != -1){
+          pivi.processAnimationString(piviStr, "specification/example"+i+".gif");
+          return "```\n"+piviStr+"\n```\n![](example"+i+".gif)\n";
+        } else {
+          pivi.processString(piviStr, "specification/example"+i+".png");
+          return "```\n"+piviStr+"\n```\n![](example"+i+".png)\n";
+        }
   }}};
   gulp.src("./specification/spec.md.hbs")
     .pipe(handlebars({},options))
@@ -46,9 +51,9 @@ gulp.task("build-specification", function(){
     .pipe(gulp.dest("./specification/"));
 })
 
-gulp.task("run-tests", function(){
+gulp.task("run-tests", ["build-grammar"], function(){
   gulp.src("./test/*.js")
     .pipe(mocha());
 })
 
-gulp.task("test", ["clean","build-grammar", "run-tests"]);
+gulp.task("test", ["build-grammar", "run-tests"]);

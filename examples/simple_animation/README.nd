@@ -1,0 +1,7 @@
+# Usage
+
+Use pivi and create_anim like this
+
+```
+node anim.js | ../../pivi.js | ../../bin/create_anim.sh
+```
