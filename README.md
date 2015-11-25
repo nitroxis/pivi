@@ -35,6 +35,18 @@ All points can be written as a tupel or you can simply omit all commas or bracke
 - `circle ((centerx,centery) radius)`
 - `circles ((100,100) 20) ((centerx,centery) radius)`
 
+# Development
+If you want to work on pivi you can follow these steps:
+
+1. clone it
+2. install necessary dependencies (currently cairo and Image Magicks convert for animations)
+3. install npm (e.g. via [NVM](https://github.com/creationix/nvm))
+4. run `npm install` in the projects root directory
+5. run `npm test` to check if everything works
+
+You should install gulp (`npm install -g gulp`) to run all the tasks during development. You can see
+all available tasks in `gulpfile.js` or via `gulp --tasks`.
+
 # Alternatives
 You can try ImageMagick's convert. You can pass arguments to it that function similar to our commands. More [here](http://www.imagemagick.org/Usage/draw)
 
