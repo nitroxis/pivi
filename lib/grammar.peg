@@ -31,9 +31,8 @@ circles = "circle" cs:(circle)* { return { type: "circles", data: cs }; }
 circle = pos:tupel r:ufloat ws { return [pos,r]; }
 
 pointSize = "pointSize" ws size:ufloat { return { type: "pointSize", isProperty:true, data: size }; }
-lineWidth = "lineWidth" ws size:ufloat { return { type: "lineWidth", isProperty:true, data: size }; }
-
-color = "color" ws color:colorType { return { type: "color", isProperty:true, data: color }; }
+lineWidth = "lineWidth" ws size:ufloat { return { type: "lineWidth", isProperty:true, data: [size] }; }
+color = "color" ws color:colorType { return { type: "color", isProperty:true, data: [color] }; }
 
 tupel
  = ws first:float ws second:float ws { return {x: first, y: second }; }
@@ -42,7 +41,7 @@ colorType = color:(rgb / hexColor / name) { return color; }
 //colorType = color:name { return color; }
 
 rgb = "rgb" rgbColor:utupel3 { return rgbColor; }
-hexColor = "#" hexColor:([0-9,A-F,a-f]+) { return hexColor; }
+hexColor = "#" hexColor:([0-9,A-F,a-f]+) { return "#" + hexColor.join(""); }
 name = nameColor:([A-Z,a-z])+ { return nameColor.join(""); }
 
 utupel3
