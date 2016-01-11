@@ -15,9 +15,12 @@
   ],
   "dependencies": {
     "canvas": "^1.2.2",
+    "color-string": "^0.4.0",
     "event-stream": "^3.3.1",
+    "glob": "^6.0.2",
     "lodash": "^3.8.0",
     "printf": "^0.2.1",
+    "rune.js": "^0.2.13",
     "yargs": "^3.9.0"
   },
   "devDependencies": {
