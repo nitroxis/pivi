@@ -11,8 +11,6 @@ var argv = require("yargs")
           .usage("echo 'line (0 0) (200 200)' | $0 [options]")
           .default("f",null)
           .describe("f", "The output file that gets generated")
-          .default("a",false)
-          .describe("a","create an animated gif")
           .help("h")
           .argv;
 // var api = require("./lib/api.js");
